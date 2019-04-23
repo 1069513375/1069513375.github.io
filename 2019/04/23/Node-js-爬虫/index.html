@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Stuart&#39;s blog</title>
+  <title>Node.js 爬虫 | Stuart&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ʮ��¥��� �ᷢ�ڳ���">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Stuart&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="一.准备工作1.新建项目目录(磁盘中建立文件夹，如：H:\web\baiduNews)2.初始化package.json  1.在DOS命令行中进入项目根目录 baiduNews 2.执行npm init，初始化package.json文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 爬虫">
+<meta property="og:url" content="http://yoursite.com/2019/04/23/Node-js-爬虫/index.html">
 <meta property="og:site_name" content="Stuart&#39;s blog">
-<meta property="og:description" content="ʮ��¥��� �ᷢ�ڳ���">
+<meta property="og:description" content="一.准备工作1.新建项目目录(磁盘中建立文件夹，如：H:\web\baiduNews)2.初始化package.json  1.在DOS命令行中进入项目根目录 baiduNews 2.执行npm init，初始化package.json文件">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-23T13:14:10.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Stuart&#39;s blog">
-<meta name="twitter:description" content="ʮ��¥��� �ᷢ�ڳ���">
+<meta name="twitter:title" content="Node.js 爬虫">
+<meta name="twitter:description" content="一.准备工作1.新建项目目录(磁盘中建立文件夹，如：H:\web\baiduNews)2.初始化package.json  1.在DOS命令行中进入项目根目录 baiduNews 2.执行npm init，初始化package.json文件">
   
     <link rel="alternative" href="/atom.xml" title="Stuart&#39;s blog" type="application/atom+xml">
   
@@ -157,16 +158,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Node-js-爬虫" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Node-js-爬虫" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/23/Node-js-爬虫/">Node.js 爬虫</a>
+    <h1 class="article-title" itemprop="name">
+      Node.js 爬虫
     </h1>
   
 
@@ -182,30 +181,120 @@
         <h1 id="一-准备工作"><a href="#一-准备工作" class="headerlink" title="一.准备工作"></a>一.准备工作</h1><h2 id="1-新建项目目录-磁盘中建立文件夹，如：H-web-baiduNews"><a href="#1-新建项目目录-磁盘中建立文件夹，如：H-web-baiduNews" class="headerlink" title="1.新建项目目录(磁盘中建立文件夹，如：H:\web\baiduNews)"></a>1.新建项目目录(磁盘中建立文件夹，如：H:\web\baiduNews)</h2><h2 id="2-初始化package-json"><a href="#2-初始化package-json" class="headerlink" title="2.初始化package.json"></a>2.初始化package.json</h2><blockquote>
 <ul>
 <li>1.在DOS命令行中进入项目根目录 baiduNews</li>
-<li>2.执行npm init，初始化package.json文件
-        
-          <a class="article-more-a" href="/2019/04/23/Node-js-爬虫/#more">more >></a>
-        
+<li>2.执行npm init，初始化package.json文件<a id="more"></a>
+</li>
+</ul>
+</blockquote>
+<h2 id="3-注入依赖"><a href="#3-注入依赖" class="headerlink" title="3.注入依赖"></a>3.注入依赖</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">express (使用express来搭建一个简单的Http服务器。当然，你也可以使用node中自带的http模块)</span><br><span class="line">$ npm install express --save</span><br><span class="line">superagent (是node里一个非常方便的、轻量的、渐进式的第三方客户端请求代理模块，用他来请求目标页面)</span><br><span class="line">$ npm install superagent --save</span><br><span class="line">cheerio (cheerio相当于node版的jQuery。它主要是用来获取抓取到的页面元素和其中的数据信息)</span><br><span class="line">$ npm install cheerio --save</span><br><span class="line">Electron (可以让你使用纯JavaScript调用Chrome丰富的原生的接口来创造桌面应用。你可以把它看作一个专注于桌面应用的Node.js的变体，而不是Web服务器。其基于浏览器的应用方式可以极方便的做各种响应式的交互)</span><br><span class="line">$ ELECTRON_MIRROR=http:<span class="comment">//npm.taobao.org/mirrors/electron/ npm install -g electron</span></span><br><span class="line">Nightmare (是一个基于Electron的框架，针对Web自动化测试和爬虫)</span><br><span class="line">$ npm install nightmare --save</span><br></pre></td></tr></table></figure>
+<h1 id="二、流程规划"><a href="#二、流程规划" class="headerlink" title="二、流程规划"></a>二、流程规划</h1><blockquote>
+<ul>
+<li>1.express  启动一个简单的Http服务</li>
+<li>2.分析目标页面DOM结构，找到所要抓取的信息的相关DOM元素</li>
+<li>3.使用superagent请求目标页面动态页面（需要加载页面后运行JS或请求接口的页面）</li>
+<li>4.使用Nightmare模拟浏览器访问使用cheerio获取页面元素，获取目标数据</li>
+</ul>
+</blockquote>
+<h1 id="三、Coding"><a href="#三、Coding" class="headerlink" title="三、Coding"></a>三、Coding</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//首先实例化一个express对象，用它来启动一个本地监听3000端口的Http服务。</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> server = app.listen(<span class="number">3005</span>,()=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> host = server.address().address;</span><br><span class="line">    <span class="keyword">let</span> post = server.address().port;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入superagent cheerio包</span></span><br><span class="line"><span class="keyword">const</span> superagent = <span class="built_in">require</span>(<span class="string">'superagent'</span>);</span><br><span class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> localNews = [];</span><br><span class="line"><span class="keyword">let</span> hotNews = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用superagent.get()方法访问网页</span></span><br><span class="line"><span class="comment">//获取热点新闻</span></span><br><span class="line">superagent.get(<span class="string">"http://news.baidu.com/"</span>).end(<span class="function">(<span class="params">error,response</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(error)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`热点新闻访问失败 - <span class="subst">$&#123;error&#125;</span>`</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        hotNews = getHotNews(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> getHotNews = <span class="function">(<span class="params">res</span>) =&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> hotNews = [];</span><br><span class="line">    <span class="comment">//用load方法加载response中的text 即网页源代码</span></span><br><span class="line">    <span class="keyword">let</span> $ = cheerio.load(res.text);</span><br><span class="line">    $(<span class="string">'div#pane-news ul li a'</span>).each(<span class="function">(<span class="params">idx,ele</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> news = &#123;</span><br><span class="line">            title : $(ele).text(),</span><br><span class="line">            href : $(ele).attr(<span class="string">'href'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        hotNews.push(news);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> hotNews;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取本地新闻 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导入 nightmare包</span></span><br><span class="line"><span class="keyword">const</span> Nightmare = <span class="built_in">require</span>(<span class="string">'nightmare'</span>); <span class="comment">// 自动化测试包，处理动态页面</span></span><br><span class="line"><span class="keyword">const</span> nightmare = Nightmare(&#123;<span class="attr">show</span>:<span class="literal">true</span>&#125;);<span class="comment">// show:true  显示内置模拟浏览器</span></span><br><span class="line"></span><br><span class="line">nightmare</span><br><span class="line">.goto(<span class="string">"http://news.baidu.com/"</span>)</span><br><span class="line">.wait(<span class="string">"div#local_news"</span>)</span><br><span class="line">.evaluate(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">document</span>.querySelector(<span class="string">"div#local_news"</span>).innerHTML)</span><br><span class="line">.then( <span class="function">(<span class="params">htmlstr</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//获取本地新闻数据</span></span><br><span class="line">    localNews = getLocalNews(htmlstr);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">error</span> =&gt;</span></span><br><span class="line">    &#123;<span class="built_in">console</span>.log(<span class="string">`本地新闻获取失败 - <span class="subst">$&#123;error&#125;</span>`</span>)&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> getLocalNews = <span class="function">(<span class="params">htmlstr</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> localNews = [];</span><br><span class="line">    <span class="comment">//用load方法加载response中的text 即网页源代码</span></span><br><span class="line">    <span class="keyword">let</span> $ = cheerio.load(htmlstr);</span><br><span class="line">    $(<span class="string">'ul#localnews-focus li a'</span>).each(<span class="function">(<span class="params">idx,ele</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> news = &#123;</span><br><span class="line">            title : $(ele).text(),</span><br><span class="line">            href : $(ele).attr(<span class="string">'href'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        localNews.push(news);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> localNews;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当一个get请求 http://localhost:3005时，就会后面的async函数</span></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="keyword">async</span> (req, res, next) =&gt; &#123;</span><br><span class="line">    res.send(&#123;</span><br><span class="line">      hotNews: hotNews,</span><br><span class="line">      localNews: localNews</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
       
 
       
-    </li></ul></blockquote></div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
     <div class="article-info article-info-index">
       
       
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/23/Node-js-爬虫/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/23/Node-js-爬虫/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/21/firstDay/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">firstDay</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -225,185 +314,14 @@
 
 
 
-
   
-    <article id="post-firstDay" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/21/firstDay/">firstDay</a>
-    </h1>
   
 
-        
-        <a href="/2019/04/21/firstDay/" class="archive-article-date">
-  	<time datetime="2019-04-21T06:38:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>@<a href="每日A题一览">TOC</a></p>
-<h1 id="A题第一天"><a href="#A题第一天" class="headerlink" title="A题第一天"></a>A题第一天</h1><h2 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h2><p><strong>反转一个只有3位数的整数。</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reverseInteger = <span class="function"><span class="keyword">function</span> (<span class="params">number</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> number1 = <span class="built_in">parseInt</span>(number%<span class="number">10</span>);<span class="comment">//个位</span></span><br><span class="line">    <span class="keyword">var</span> number2 = <span class="built_in">parseInt</span>(number%<span class="number">100</span>/<span class="number">10</span>);<span class="comment">//十位</span></span><br><span class="line">    <span class="keyword">var</span> number3 = <span class="built_in">parseInt</span>(number/<span class="number">100</span>);<span class="comment">//百位</span></span><br><span class="line">    <span class="keyword">var</span> result =<span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span>(number1==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(number2==<span class="number">0</span>)&#123;</span><br><span class="line">            result += number3;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            result += number2 ;</span><br><span class="line">            result += number3;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            result += number1;</span><br><span class="line">            result += number2 ;</span><br><span class="line">            result += number3;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-题目描述"><a href="#2-题目描述" class="headerlink" title="2.题目描述"></a>2.题目描述</h2><p><strong>将一个字符由小写字母转换为大写字母</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lowercaseToUppercase = <span class="function"><span class="keyword">function</span> (<span class="params">character</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// write your code here</span></span><br><span class="line">    <span class="keyword">return</span> character.toUpperCase();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-题目描述"><a href="#3-题目描述" class="headerlink" title="3.题目描述"></a>3.题目描述</h2><p><strong>查找斐波纳契数列中第 N 个数。</strong></p>
-<p>所谓的斐波纳契数列是指：</p>
-<p>前2个数是 0 和 1 。<br>第 i 个数是第 i-1 个数和第i-2 个数的和。<br>斐波纳契数列的前10个数字是：</p>
-<p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34 …</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fibonacci = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = [<span class="number">0</span>,<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">            num[i] = num[i<span class="number">-1</span>]+num[i<span class="number">-2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num[n<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4-题目描述"><a href="#4-题目描述" class="headerlink" title="4.题目描述"></a>4.题目描述</h2><p><strong>矩阵面积</strong></p>
-<p>实现一个矩阵类Rectangle，包含如下的一些成员变量与函数：</p>
-<p>1.两个共有的成员变量 width 和 height 分别代表宽度和高度。<br>2.一个构造函数，接受2个参数 width 和 height 来设定矩阵的宽度和高度。<br>3.一个成员函数 getArea，返回这个矩阵的面积。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> width;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> height;</span><br><span class="line">    Rectangle(<span class="keyword">int</span> width,<span class="keyword">int</span> height)&#123;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> width*height;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##5.题目描述</p>
-<p><strong>排序算法</strong></p>
-<p>给一组整数，按照升序排序，使用选择排序，冒泡排序，插入排序或者任何 O(n2) 的排序算法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sortIntegers = <span class="function"><span class="keyword">function</span> (<span class="params">A</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = A.length;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;i+j&lt;n<span class="number">-1</span>;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[j]&gt;A[j+<span class="number">1</span>])&#123;</span><br><span class="line">                temp = A[j];</span><br><span class="line">                A[j] = A[j+<span class="number">1</span>];</span><br><span class="line">                A[j+<span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##6.题目描述</p>
-<p><strong>链表节点计数</strong><br>计算链表中有多少个节点.</p>
-<p>样例<br>样例  1:<br>    输入:  1-&gt;3-&gt;5-&gt;null<br>    输出: 3</p>
-<pre><code>样例解释: 
-返回链表中结点个数，也就是链表的长度.
-</code></pre><p>样例 2:<br>    输入:  null<br>    输出: 0</p>
-<pre><code>样例解释: 
-空链表长度为0
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param head: the first node of linked list.</span></span><br><span class="line"><span class="comment"> * @return: An integer</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> countNodes = <span class="function"><span class="keyword">function</span> (<span class="params">head</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> node = head;</span><br><span class="line">    <span class="keyword">if</span>(node!==<span class="literal">null</span>)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;node.next!==<span class="literal">null</span>;i++)&#123;</span><br><span class="line">         node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##7.题目描述</p>
-<p><strong>交换数组两个元素</strong><br>给你一个数组和两个索引，交换下标为这两个索引的数字</p>
-<p>样例<br>样例 1:</p>
-<p>输入:  [1, 2, 3, 4], index1 = 2, index2 = 3<br>输出:  交换后你的数组应该是[1, 2, 4, 3]， 不需要返回任何值，只要就地对数组进行交换即可。<br>样例解释: 就地交换，不需要返回值。</p>
-<p>样例 2:</p>
-<p>输入:  [1, 2, 2, 2], index1 = 0, index2 = 3<br>输出: 交换后你的数组应该是[2, 2, 2, 1]， 不需要返回任何值，只要就地对数组进行交换即可。<br>样例解释: 就地交换，不需要返回值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param head: the first node of linked list.</span></span><br><span class="line"><span class="comment"> * @return: An integer</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> swapIntegers = <span class="function"><span class="keyword">function</span> (<span class="params">A, index1, index2</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// write your code here</span></span><br><span class="line">    <span class="keyword">var</span> temp  = A[index1];</span><br><span class="line">    A[index1] = A[index2];</span><br><span class="line">    A[index2] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##.8题目描述</p>
-<p><strong>统计数字</strong></p>
-<p>计算数字 k 在 0 到 n 中的出现的次数，k 可能是 0~9 的一个值。</p>
-<p>样例<br>样例 1：</p>
-<p>输入：<br>k = 1, n = 1<br>输出：<br>1<br>解释：<br>在 [0, 1] 中，我们发现 1 出现了 1 次 (1)。<br>样例 2：</p>
-<p>输入：<br>k = 1, n = 12<br>输出：<br>5<br>解释：<br>在 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] 中，我们发现 1 出现了 5 次 (1, 10, 11, 12)。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> digitCounts = <span class="function"><span class="keyword">function</span> (<span class="params">k, n</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// write your code here</span></span><br><span class="line">    <span class="keyword">var</span> result=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> str = i.toString();</span><br><span class="line">        <span class="keyword">var</span> arr = str.split(<span class="string">""</span>);</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;arr.length;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j]==k)&#123;</span><br><span class="line">                result++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##.题目描述</p>
-<hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>##.题目描述</p>
-<hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/21/firstDay/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/20/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2019/04/20/hello-world/" class="archive-article-date">
-  	<time datetime="2019-04-20T14:15:50.709Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/20/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -426,8 +344,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
